@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora de Propina</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f4f4f4;
+            padding: 20px;
+        }
+        .container {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            display: inline-block;
+        }
+        input, button {
+            margin: 10px;
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <img src="https://www.pol.una.py/wp-content/uploads/2019/07/fpuna_logo_corporativo.svg" alt="Encabezado Restaurante">
+        <h2>Calculadora de Propina</h2>
+        <label for="monto">Monto total de la cuenta:</label>
+        <input type="number" id="monto" placeholder="Ingrese el monto" required>
+        <br>
+        <label for="porcentaje">Porcentaje de propina:</label>
+        <input type="number" id="porcentaje" placeholder="Ingrese el porcentaje" required>
+        <br>
+        <button onclick="calcularPropina()">Calcular Propina</button>
+        <h3 id="resultado"></h3>
+    </div>
+
+    <script>
+        function calcularPropina() {
+            let monto = parseFloat(document.getElementById("monto").value);
+            let porcentaje = parseFloat(document.getElementById("porcentaje").value);
+            
+            if (isNaN(monto) || isNaN(porcentaje) || monto <= 0 || porcentaje <= 0) {
+                document.getElementById("resultado").innerText = "Por favor, ingrese valores válidos.";
+                return;
+            }
+            
+            let propina = (monto * porcentaje) / 100;
+            document.getElementById("resultado").innerText = `Propina sugerida: Gs.${propina.toFixed(0)}`;
+        }
+    </script>
+</body>
+</html>

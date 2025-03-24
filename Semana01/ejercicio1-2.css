@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+        <title>Mi Primera Pagina Web</title>
+</head>
+<body>
+    <h1>Bienvenido a mi Pagina Web</h1>
+    <p>Este es un parrafo de ejemplo dentro del cuerpo del documento HTML.</p>
+    
+    <h2>Lista Desordenada</h2>
+    <ul>
+        <li>frutas</li>
+        <li>verduras</li>
+        <li>carnes</li>
+    </ul>
+    
+    <h2>Lista Ordenada</h2>
+    <ol>
+        <li>Alimentos</li>
+        <li>Bebidas</li>
+        <li>Abrigo</li>
+    </ol>
+</body>
+</html>
