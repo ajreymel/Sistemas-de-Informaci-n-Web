@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+       <title>Mi Primera Pagina Web</title>
+</head>
+<body>
+    <header>
+        <h1>Bienvenido a mi Pagina Web</h1>
+    </header>
+    
+    <section>
+        <article>
+            <h2>Artículo Principal</h2>
+            <p>Este es un artículo de ejemplo dentro de la seccion principal del contenido.</p>
+        </article>
+    </section>
+    <footer>
+        <p>&copy; 2025 Mi Página Web. Todos los derechos reservados.</p>
+    </footer>
+</body>
+</html>
