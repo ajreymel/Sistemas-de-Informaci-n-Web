@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora de Diferencia de Fechas</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        main {
+            text-align: center;
+            padding: 20px;
+        }
+
+        form {
+            margin: 20px auto;
+            display: block;
+            width: 100%;
+            max-width: 400px;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+
+        button {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        #result {
+            margin-top: 20px;
+            font-size: 18px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <main>
+        <img src="https://www.pol.una.py/wp-content/uploads/2019/07/fpuna_logo_corporativo.svg" alt="Encabezado de la Página">
+        <h1>Calculadora de Diferencia de Fechas</h1>
+        <form id="dateForm">
+            <label for="date1">Ingrese la Fecha inferior (dd/mm/yyyy):</label>
+            <input type="text" id="date1" placeholder="dd/mm/yyyy" required>
+
+            <label for="date2">Ingrese la Fecha superior (dd/mm/yyyy):</label>
+            <input type="text" id="date2" placeholder="dd/mm/yyyy" required>
+
+            <button type="submit">Calcular Diferencia</button>
+        </form>
+
+        <div id="result"></div>
+    </main>
+
+    <script>
+        document.getElementById("dateForm").addEventListener("submit", function(event) {
+            event.preventDefault();
+
+            // Obtener las fechas ingresadas
+            const date1 = document.getElementById("date1").value;
+            const date2 = document.getElementById("date2").value;
+
+            // Validar el formato dd/mm/yyyy
+            const datePattern = /^\d{2}\/\d{2}\/\d{4}$/;
+
+            if (!datePattern.test(date1) || !datePattern.test(date2)) {
+                alert("Por favor, ingrese las fechas en el formato correcto (dd/mm/yyyy).");
+                return;
+            }
+
+            // Convertir las fechas al formato Date
+            const [day1, month1, year1] = date1.split("/").map(num => parseInt(num));
+            const [day2, month2, year2] = date2.split("/").map(num => parseInt(num));
+
+            const dateObj1 = new Date(year1, month1 - 1, day1); // Mes es 0-indexado en JavaScript
+            const dateObj2 = new Date(year2, month2 - 1, day2);
+
+            // Verificar que la segunda fecha no sea anterior a la primera
+            if (dateObj2 < dateObj1) {
+                alert("La segunda fecha no puede ser anterior a la primera.");
+                return;
+            }
+
+            // Calcular la diferencia en milisegundos
+            const diffTime = dateObj2 - dateObj1;
+            const diffDays = diffTime / (1000 * 3600 * 24); // Convertir de milisegundos a días
+
+            // Mostrar el resultado
+            document.getElementById("result").innerHTML = `La diferencia entre las fechas es de ${diffDays} días.`;
+        });
+    </script>
+
+</body>
+</html>
