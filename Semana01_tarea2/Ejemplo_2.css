@@ -1,0 +1,10 @@
+@keyframes mover {
+0% { transform: translateX(0); }
+100% { transform: translateX(300px); }
+}
+.caja {
+width: 100px;
+height: 100px;
+background-color: green;
+animation: mover 2s infinite alternate;
+}
